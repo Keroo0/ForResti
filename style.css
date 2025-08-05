@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+}
+.gambarOp{
+    width: 200px;
+    height:200px;
+}
+.text-container img,
+.text-container h1 {
+  transition: opacity 0.5s ease;
+}
+
+.text-container img[style*="display: none"],
+.text-container h1[style*="display: none"] {
+  opacity: 0;
+}
+
+.opening-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: white;
+}
+
+#startButton {
+  padding: 10px 30px;
+  font-size: 18px;
+  background-color: pink;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+#startButton:hover {
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+  transform: scale(1.05);
+}
+
+#main {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+#main.show {
+  display: flex;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#changetext {
+  font-size: 50px;
+  font-family: 'Great Vibes', cursive;
+  max-width: 100%;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  #changetext {
+    font-size: 24px;
+  }
+
+  #startButton {
+    font-size: 16px;
+    padding: 8px 20px;
+  }
+}
+#love-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.love {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 1;
+  }
+}
+.floating-text-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.text-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.text-layer p {
+  position: absolute;
+  white-space: nowrap;
+  animation: floatUp linear infinite;
+}
+
+/* Layer 1: Dekat */
+.layer1 p {
+  font-size: 20px;
+  opacity: 0.9;
+  animation-duration: 25s;
+  filter: blur(0.5px);
+  z-index: 3;
+}
+
+/* Layer 2: Sedang */
+.layer2 p {
+  font-size: 16px;
+  opacity: 0.5;
+  animation-duration: 35s;
+  filter: blur(1px);
+  z-index: 2;
+}
+
+/* Layer 3: Jauh */
+.layer3 p {
+  font-size: 12px;
+  opacity: 0.3;
+  animation-duration: 45s;
+  filter: blur(2px);
+  z-index: 1;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150vh);
+    opacity: 0;
+  }
+}
